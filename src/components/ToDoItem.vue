@@ -9,10 +9,13 @@
 export default {
   name: "ToDoItem",
   props: ["item"],
-  methods: {
-    deleteItem(id) {
-      this.$emit("delete", id);
+  setup(props, { emit }) {
+    function deleteItem(id) {
+      emit("delete", id);
     }
+    return {
+      deleteItem
+    };
   }
 };
 </script>
@@ -32,6 +35,7 @@ export default {
   border-color: rgba(0, 0, 0, 0.5);
   background: #ffffff;
   box-shadow: 5px 5px 13px #d9d9d9, -5px -5px 13px #ffffff;
+  text-align: left;
 }
 
 .ToDoItem-Delete {
